@@ -1,7 +1,8 @@
-import Head from 'next/head'
-import { Footer } from '../components/Footer'
-import { Links } from '../components/Links'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import { Footer } from "../components/Footer";
+import { Headline } from "../components/Headline";
+import { Links } from "../components/Links";
+import styles from "../styles/Home.module.css";
 
 export default function About() {
   return (
@@ -13,14 +14,12 @@ export default function About() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          About <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <Headline page="about" />
 
-        <Links/>
+        <Links />
       </main>
 
-      <Footer/>
+      <Footer />
     </div>
-  )
+  );
 }

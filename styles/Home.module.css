@@ -43,6 +43,8 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  /* 各単語の先頭文字のみを大文字に変換 */
+  text-transform: capitalize;
 }
 
 .title,
