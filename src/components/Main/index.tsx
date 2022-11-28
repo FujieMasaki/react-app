@@ -1,6 +1,6 @@
-import { Headline } from "../Headline";
-import { Links } from "../Links";
-import classes from "./Main.module.css";
+import { Headline } from "src/components/Headline";
+import classes from "src/components/Main/Main.module.css";
+import { Links } from "src/components/Links";
 
 type Main = {
   page: string;
