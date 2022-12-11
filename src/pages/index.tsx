@@ -2,21 +2,19 @@ import Image from "next/image";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "src/styles/Home.module.css";
 
 export default function Home() {
-  // const handleClick = useCallback((e) => {
-  //   console.log(e.target);
-  //   e.preventDefault();
-  // });
+  const [count, setCount] = useState(1);
+  const handleClick = (e) => {
+    setCount((count) => count + 1);
+  };
 
   useEffect(() => {
-    console.log("マウント");
     document.body.style.backgroundColor = "lightblue";
     return () => {
-      console.log("アンマウント");
       document.body.style.backgroundColor = "";
     };
   }, []);
@@ -25,13 +23,9 @@ export default function Home() {
     <div className={styles.container}>
       <title>Create Next App</title>
       <Header />
-      {/* eにはeventをクリックした時の要素が入る
-      <a href="/about" onClick={handleClick}>
-        ボタン
-      </a> */}
-
+      <h1>{count}</h1>
+      <button onClick={handleClick}>ボタン</button>
       <Main page={"index"} />
-
       <Footer />
     </div>
   );
