@@ -18,6 +18,7 @@ export default function Home() {
   const [count, setCount] = useState(1);
   const [text, setText] = useState("");
   const [isShow, setIsShow] = useState(false);
+  const [array, setArray] = useState([]);
 
   const handleClick = useCallback(
     (e) => {
@@ -30,7 +31,13 @@ export default function Home() {
   );
 
   const handleDisplay = useCallback(() => {
-    setIsShow((isShow) => !isShow);
+    setPrevIsShow((prevIsShow) => !prevIsShow);
+  }, []);
+
+  const handleAdd = useCallback(() => {
+    setPrevArray((prevArray) => {
+      return prevArray;
+    });
   }, []);
 
   useEffect(() => {
@@ -51,7 +58,13 @@ export default function Home() {
       {isShow ? <h1>{count}</h1> : null}
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
+      <button onClick={handleAdd}>配列を追加</button>
       <input type="text" value={text} onChange={handleChange} />
+      <ul>
+        {array.map((item) => {
+          return <li key={item}>{item}</li>;
+        })}
+      </ul>
       <Main page={"index"} />
       <Footer />
     </div>
