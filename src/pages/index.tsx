@@ -31,14 +31,18 @@ export default function Home() {
   );
 
   const handleDisplay = useCallback(() => {
-    setPrevIsShow((prevIsShow) => !prevIsShow);
+    setIsShow((prevIsShow) => !prevIsShow);
   }, []);
 
   const handleAdd = useCallback(() => {
-    setPrevArray((prevArray) => {
-      return prevArray;
+    setArray((prevArray) => {
+      if (prevArray.some((item) => item === text)) {
+        alert("既に同じ要素の値があります");
+        return prevArray;
+      }
+      return [...prevArray, text];
     });
-  }, []);
+  }, [text]);
 
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue";
