@@ -14,11 +14,9 @@ type Text = {
   value: string;
 };
 
-export default function Home() {
+const useCounter = () => {
   const [count, setCount] = useState(1);
-  const [text, setText] = useState("");
   const [isShow, setIsShow] = useState(false);
-  const [array, setArray] = useState([]);
 
   const handleClick = useCallback(
     (e) => {
@@ -34,6 +32,13 @@ export default function Home() {
     setIsShow((prevIsShow) => !prevIsShow);
   }, []);
 
+  return { count, isShow, handleClick, handleDisplay };
+};
+
+const useInputArray = () => {
+  const [text, setText] = useState("");
+  const [array, setArray] = useState([]);
+
   const handleAdd = useCallback(() => {
     setArray((prevArray) => {
       if (prevArray.some((item) => item === text)) {
@@ -44,15 +49,21 @@ export default function Home() {
     });
   }, [text]);
 
+  const handleChange = useCallback((e) => {
+    setText(e.text.value);
+  }, []);
+  return { text, array, handleAdd, handleChange };
+};
+
+export default function Home() {
+  const { count, isShow, handleClick, handleDisplay } = useCounter();
+  const { text, array, handleAdd, handleChange } = useInputArray();
+
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue";
     return () => {
       document.body.style.backgroundColor = "";
     };
-  }, []);
-
-  const handleChange = useCallback((e) => {
-    setText(e.text.value);
   }, []);
 
   return (
