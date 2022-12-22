@@ -2,9 +2,12 @@ import Image from "next/image";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect } from "react";
 
 import styles from "src/styles/Home.module.css";
+import { useCounter } from "src/hooks/useCounter";
+import { useInputArray } from "src/hooks/useInputArray";
+import { useBgLightBlue } from "src/hooks/useBgLightBlue";
 
 type Event = {
   text: Text;
@@ -14,57 +17,10 @@ type Text = {
   value: string;
 };
 
-const useCounter = () => {
-  const [count, setCount] = useState(1);
-  const [isShow, setIsShow] = useState(false);
-
-  const handleClick = useCallback(
-    (e) => {
-      console.log(count);
-      if (count < 10) {
-        setCount((count) => count + 1);
-      }
-    },
-    [count]
-  );
-
-  const handleDisplay = useCallback(() => {
-    setIsShow((prevIsShow) => !prevIsShow);
-  }, []);
-
-  return { count, isShow, handleClick, handleDisplay };
-};
-
-const useInputArray = () => {
-  const [text, setText] = useState("");
-  const [array, setArray] = useState([]);
-
-  const handleAdd = useCallback(() => {
-    setArray((prevArray) => {
-      if (prevArray.some((item) => item === text)) {
-        alert("既に同じ要素の値があります");
-        return prevArray;
-      }
-      return [...prevArray, text];
-    });
-  }, [text]);
-
-  const handleChange = useCallback((e) => {
-    setText(e.text.value);
-  }, []);
-  return { text, array, handleAdd, handleChange };
-};
-
 export default function Home() {
   const { count, isShow, handleClick, handleDisplay } = useCounter();
   const { text, array, handleAdd, handleChange } = useInputArray();
-
-  useEffect(() => {
-    document.body.style.backgroundColor = "lightblue";
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
-  }, []);
+  useBgLightBlue();
 
   return (
     <div className={styles.container}>
