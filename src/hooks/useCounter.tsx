@@ -4,7 +4,7 @@ export const useCounter = () => {
   const [count, setCount] = useState(1);
   const [isShow, setIsShow] = useState(false);
 
-  const handleClick = useCallback(
+  const handleClick: (any) => void = useCallback(
     (e) => {
       console.log(count);
       if (count < 10) {
