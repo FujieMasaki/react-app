@@ -8,13 +8,8 @@ import { useCounter } from "src/hooks/useCounter";
 import { useInputArray } from "src/hooks/useInputArray";
 import { useBgLightBlue } from "src/hooks/useBgLightBlue";
 
-type Counter = {
-  count: number;
-  isShow: boolean;
-};
-
 export default function About() {
-  const { count, isShow, handleClick, handleDisplay }: Counter = useCounter;
+  const { count, isShow, handleClick, handleDisplay } = useCounter;
   const { text, array, handleAdd, handleChange } = useInputArray();
   useBgLightBlue();
   return (
