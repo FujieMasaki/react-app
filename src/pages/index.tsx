@@ -5,9 +5,6 @@ import { Main } from "src/components/Main";
 import { useEffect } from "react";
 
 import styles from "src/styles/Home.module.css";
-import { useCounter } from "src/hooks/useCounter";
-import { useInputArray } from "src/hooks/useInputArray";
-import { useBgLightBlue } from "src/hooks/useBgLightBlue";
 
 type Event = {
   text: Text;
@@ -17,11 +14,17 @@ type Text = {
   value: string;
 };
 
-export default function Home() {
-  const { count, isShow, handleClick, handleDisplay } = useCounter();
-  const { text, array, handleAdd, handleChange } = useInputArray();
-  useBgLightBlue();
-
+export default function Home(props: any) {
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleDisplay,
+    text,
+    array,
+    handleAdd,
+    handleChange,
+  } = props;
   return (
     <div className={styles.container}>
       <title>Create Next App</title>
