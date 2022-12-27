@@ -14,7 +14,17 @@ type Text = {
   value: string;
 };
 
-export default function Home() {
+export default function Home(props: any) {
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleDisplay,
+    text,
+    array,
+    handleAdd,
+    handleChange,
+  } = props;
   return (
     <div className={styles.container}>
       <title>Create Next App</title>
