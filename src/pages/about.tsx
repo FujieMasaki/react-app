@@ -4,6 +4,7 @@ import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 
+
 export default function About({
   count,
   isShow,
@@ -14,6 +15,7 @@ export default function About({
   handleAdd,
   handleChange,
 }) {
+
   return (
     <div className={styles.container}>
       <Head>
