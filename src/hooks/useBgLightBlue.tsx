@@ -1,10 +1,17 @@
-import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useMemo } from "react";
 
 export const useBgLightBlue = () => {
+  const router = useRouter();
+
+  const bgColor = useMemo(() => {
+    return router.pathname === "/" ? "lightblue" : "beige";
+  }, [router.pathname]);
   useEffect(() => {
-    document.body.style.backgroundColor = "lightblue";
+    document.body.style.backgroundColor =
+      router.pathname === "/" ? "lightblue" : "beige";
     return () => {
       document.body.style.backgroundColor = "";
     };
-  }, []);
+  }, [bgColor]);
 };
