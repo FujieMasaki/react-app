@@ -18,7 +18,7 @@ export default function About(props: any) {
       <button onClick={props.handleDisplay}>
         {props.isShow ? "非表示" : "表示"}
       </button>
-      <button onClick={props.handleAdd}>配列追加</button>
+      <button onClick={props.handleAdd}>配列の追加</button>
       <input type="text" value={props.text} onChange={props.handleChange} />
       <ul>
         {props.array.map((item) => {
