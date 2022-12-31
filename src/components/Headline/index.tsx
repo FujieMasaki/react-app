@@ -11,7 +11,7 @@ type Obj = {
   foo: string;
   bar: string;
 };
-export function Headline(props: Headline) {
+export const Headline = (props: Headline) => {
   return (
     <div>
       <h1 className={classes.title}>{props.page} page</h1>
@@ -20,4 +20,4 @@ export function Headline(props: Headline) {
       </p>
     </div>
   );
-}
+};

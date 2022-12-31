@@ -14,28 +14,20 @@ type Text = {
   value: string;
 };
 
-export default function Home(props: any) {
-  const {
-    count,
-    isShow,
-    handleClick,
-    handleDisplay,
-    text,
-    array,
-    handleAdd,
-    handleChange,
-  } = props;
+const Home = (props: any) => {
   return (
     <div className={styles.container}>
       <title>Create Next App</title>
       <Header />
-      {isShow ? <h1>{count}</h1> : null}
-      <button onClick={handleClick}>ボタン</button>
-      <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
-      <button onClick={handleAdd}>配列を追加</button>
-      <input type="text" value={text} onChange={handleChange} />
+      {props.isShow ? <h1>{props.count}</h1> : null}
+      <button onClick={props.handleClick}>ボタン</button>
+      <button onClick={props.handleDisplay}>
+        {props.isShow ? "非表示" : "表示"}
+      </button>
+      <button onClick={props.handleAdd}>配列を追加</button>
+      <input type="text" value={props.text} onChange={props.handleChange} />
       <ul>
-        {array.map((item) => {
+        {props.array.map((item) => {
           return <li key={item}>{item}</li>;
         })}
       </ul>
@@ -43,4 +35,6 @@ export default function Home(props: any) {
       <Footer />
     </div>
   );
-}
+};
+
+export default Home;
