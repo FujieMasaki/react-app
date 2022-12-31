@@ -14,7 +14,7 @@ export default function About(props: any) {
       </Head>
       <Header />
       {props.isShow ? <h1>{props.doubleCount}</h1> : null}
-      <button onClick={props.handleClick}>ボタン</button>
+      <button onClick={props.handleClick}>ボタンクリック</button>
       <button onClick={props.handleDisplay}>
         {props.isShow ? "非表示" : "表示"}
       </button>
