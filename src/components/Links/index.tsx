@@ -1,6 +1,13 @@
 import classes from "src/components/Links/Links.module.css";
 
-export const Links = ({ items, handleReduce }) => {
+type Links = {
+  items: Items[];
+  handleReduce: () => void;
+};
+
+type Items = { href: string; title: string; description: string };
+
+export const Links = ({ items, handleReduce }: Links) => {
   return (
     <div className={classes.grid}>
       <button onClick={handleReduce}>減らす</button>
